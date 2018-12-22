@@ -56,28 +56,28 @@ lazy val multi2 = project
 
 lazy val dependencies =
   new {
-    val logbackV = "1.2.3"
-    val logstashV = "4.11"
-    val scalaLoggingV = "3.7.2"
-    val slf4jV = "1.7.25"
+    val logbackV        = "1.2.3"
+    val logstashV       = "4.11"
+    val scalaLoggingV   = "3.7.2"
+    val slf4jV          = "1.7.25"
     val typesafeConfigV = "1.3.1"
-    val pureconfigV = "0.8.0"
-    val monocleV = "1.4.0"
-    val akkaV = "2.5.6"
-    val scalatestV = "3.0.4"
-    val scalacheckV = "1.13.5"
+    val pureconfigV     = "0.8.0"
+    val monocleV        = "1.4.0"
+    val akkaV           = "2.5.6"
+    val scalatestV      = "3.0.4"
+    val scalacheckV     = "1.13.5"
 
-    val logback = "ch.qos.logback" % "logback-classic" % logbackV
-    val logstash = "net.logstash.logback" % "logstash-logback-encoder" % logstashV
-    val scalaLogging = "com.typesafe.scala-logging" %% "scala-logging" % scalaLoggingV
-    val slf4j = "org.slf4j" % "jcl-over-slf4j" % slf4jV
-    val typesafeConfig = "com.typesafe" % "config" % typesafeConfigV
-    val akka = "com.typesafe.akka" %% "akka-stream" % akkaV
-    val monocleCore = "com.github.julien-truffaut" %% "monocle-core" % monocleV
-    val monocleMacro = "com.github.julien-truffaut" %% "monocle-macro" % monocleV
-    val pureconfig = "com.github.pureconfig" %% "pureconfig" % pureconfigV
-    val scalatest = "org.scalatest" %% "scalatest" % scalatestV
-    val scalacheck = "org.scalacheck" %% "scalacheck" % scalacheckV
+    val logback        = "ch.qos.logback"             % "logback-classic"          % logbackV
+    val logstash       = "net.logstash.logback"       % "logstash-logback-encoder" % logstashV
+    val scalaLogging   = "com.typesafe.scala-logging" %% "scala-logging"           % scalaLoggingV
+    val slf4j          = "org.slf4j"                  % "jcl-over-slf4j"           % slf4jV
+    val typesafeConfig = "com.typesafe"               % "config"                   % typesafeConfigV
+    val akka           = "com.typesafe.akka"          %% "akka-stream"             % akkaV
+    val monocleCore    = "com.github.julien-truffaut" %% "monocle-core"            % monocleV
+    val monocleMacro   = "com.github.julien-truffaut" %% "monocle-macro"           % monocleV
+    val pureconfig     = "com.github.pureconfig"      %% "pureconfig"              % pureconfigV
+    val scalatest      = "org.scalatest"              %% "scalatest"               % scalatestV
+    val scalacheck     = "org.scalacheck"             %% "scalacheck"              % scalacheckV
   }
 
 lazy val commonDependencies = Seq(
@@ -87,16 +87,16 @@ lazy val commonDependencies = Seq(
   dependencies.slf4j,
   dependencies.typesafeConfig,
   dependencies.akka,
-  dependencies.scalatest % "test",
+  dependencies.scalatest  % "test",
   dependencies.scalacheck % "test"
 )
 
 // SETTINGS
 
 lazy val settings =
-  commonSettings ++
-    wartremoverSettings ++
-    scalafmtSettings
+commonSettings ++
+wartremoverSettings ++
+scalafmtSettings
 
 lazy val compilerOptions = Seq(
   "-unchecked",
@@ -138,7 +138,7 @@ lazy val assemblySettings = Seq(
   }
 )
 
-lazy val releaseSettings = Seq(
+lazy val releaseSettings = Seq() /*
   releaseUseGlobalVersion := false,
   releaseVersionFile := file(name.value + "/version.sbt"),
   releaseTagName := {
@@ -146,10 +146,11 @@ lazy val releaseSettings = Seq(
     val versionValue = version.value
     s"${name.value}-v${if (releaseUseGlobalVersion.value) versionInThisBuild
     else versionValue}"
-  },
-  releaseProcess := newdayReleaseProcess
+  }/*,
+  releaseProcess := newdayReleaseProcess*/
 )
-
+ */
+/*
 import ReleaseTransformations._
 
 val newdayReleaseProcess = Seq[ReleaseStep](
@@ -164,4 +165,4 @@ val newdayReleaseProcess = Seq[ReleaseStep](
   setNextVersion, // : ReleaseStep
   commitNextVersion, // : ReleaseStep
   pushChanges // : ReleaseStep, also checks that an upstream branch is properly configured
-)
+)*/
