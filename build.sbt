@@ -138,9 +138,9 @@ lazy val assemblySettings = Seq(
   }
 )
 
-lazy val releaseSettings = Seq() /*
-  releaseUseGlobalVersion := false,
-  releaseVersionFile := file(name.value + "/version.sbt"),
+lazy val releaseSettings = Seq( /*
+  releaseUseGlobalVersion := false, */
+  releaseVersionFile := file(name.value + "/version.sbt")) /*,
   releaseTagName := {
     val versionInThisBuild = (version in ThisBuild).value
     val versionValue = version.value
