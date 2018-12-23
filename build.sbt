@@ -150,21 +150,12 @@ lazy val releaseSettings =
     releaseCalcTag := { v =>
       val versionValue = version.value; (s"${name.value}-v${v}", s"Release $v")
     }
-//    releaseCalcTag := { v =>
-//      val versionInThisBuild = (version in ThisBuild).value
-//      val versionValue = version.value
-//      s"${name.value}-v${if (releaseUseGlobalVersion.value) versionInThisBuild else versionValue}"
-//    }
-  ) /*,
-  releaseTagName := {
-    val versionInThisBuild = (version in ThisBuild).value
-    val versionValue = version.value
-    s"${name.value}-v${if (releaseUseGlobalVersion.value) versionInThisBuild
-    else versionValue}"
-  }/*,
-  releaseProcess := newdayReleaseProcess*/
-)
- */
+    //    releaseCalcTag := { v =>
+    //      val versionInThisBuild = (version in ThisBuild).value
+    //      val versionValue = version.value
+    //      s"${name.value}-v${if (releaseUseGlobalVersion.value) versionInThisBuild else versionValue}"
+    //    }
+  )
 /*
 import ReleaseTransformations._
 
