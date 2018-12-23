@@ -1,3 +1,5 @@
+import sbtrelease.Version
+
 name := "master-app"
 organization in ThisBuild := "uk.co.keshroad"
 scalaVersion in ThisBuild := "2.11.12"
@@ -138,18 +140,22 @@ lazy val assemblySettings = Seq(
   }
 )
 
-lazy val releaseSettings = Seq( /*
-  releaseUseGlobalVersion := false, */
-  releaseVersionFile := file(name.value + "/version.sbt")) /*,
-  releaseTagName := {
-    val versionInThisBuild = (version in ThisBuild).value
-    val versionValue = version.value
-    s"${name.value}-v${if (releaseUseGlobalVersion.value) versionInThisBuild
-    else versionValue}"
-  }/*,
-  releaseProcess := newdayReleaseProcess*/
-)
- */
+lazy val releaseSettings =
+  Seq(
+    releaseUseGlobalVersion := false,
+    releaseVersionFile := file(name.value + "/version.sbt"),
+    calcGitflowReleaseBranchName := { version: Version =>
+      s"release/rc-v${version.withoutQualifier}"
+    },
+    releaseCalcTag := { v =>
+      val versionValue = version.value; (s"${name.value}-v${v}", s"Release $v")
+    }
+    //    releaseCalcTag := { v =>
+    //      val versionInThisBuild = (version in ThisBuild).value
+    //      val versionValue = version.value
+    //      s"${name.value}-v${if (releaseUseGlobalVersion.value) versionInThisBuild else versionValue}"
+    //    }
+  )
 /*
 import ReleaseTransformations._
 
