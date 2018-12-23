@@ -145,7 +145,7 @@ lazy val releaseSettings =
     releaseUseGlobalVersion := false,
     releaseVersionFile := file(name.value + "/version.sbt"),
     calcGitflowReleaseBranchName := { version: Version =>
-      s"release/rc-v${version.withoutQualifier}"
+      s"release/${name.value}-rc-v${version.withoutQualifier}"
     },
     releaseCalcTag := { v =>
       val versionValue = version.value; (s"${name.value}-v${v}", s"Release $v")
